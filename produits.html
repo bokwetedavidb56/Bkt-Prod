@@ -17,6 +17,23 @@
       text-align: center;
     }
 
+    nav {
+      background-color: #444;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
       padding: 20px;
     }
@@ -45,6 +62,21 @@
       border-radius: 5px;
     }
 
+    .produit button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .produit button:hover {
+      background-color: #555;
+    }
+
     h1 {
       text-align: center;
       margin-bottom: 30px;
@@ -57,6 +89,13 @@
     <p>Découvrez une sélection originale signée BKT Prod</p>
   </header>
 
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="apropos.html">À propos</a>
+    <a href="produits.html">Produits</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
   <main>
     <div class="produits">
       <div class="produit">
@@ -64,6 +103,7 @@
         <img src="images/affiche.jpg" alt="Affiche artistique">
         <p>Décorez votre intérieur avec style.</p>
         <p><strong>Prix :</strong> 15€</p>
+        <button>Acheter</button>
       </div>
 
       <div class="produit">
@@ -71,6 +111,7 @@
         <img src="images/totebag.jpg" alt="Tote bag BKT">
         <p>Un sac écolo et pratique.</p>
         <p><strong>Prix :</strong> 12€</p>
+        <button>Acheter</button>
       </div>
 
       <div class="produit">
@@ -78,6 +119,7 @@
         <img src="images/tshirt.jpg" alt="T-shirt BKT">
         <p>Design exclusif et confort garanti.</p>
         <p><strong>Prix :</strong> 25€</p>
+        <button>Acheter</button>
       </div>
 
       <div class="produit">
@@ -85,6 +127,7 @@
         <img src="images/carnet.jpg" alt="Carnet créatif">
         <p>Notez vos idées avec style.</p>
         <p><strong>Prix :</strong> 10€</p>
+        <button>Acheter</button>
       </div>
 
       <div class="produit">
@@ -92,6 +135,7 @@
         <img src="images/mug.jpg" alt="Mug illustré">
         <p>Un mug pour commencer la journée avec bonne humeur.</p>
         <p><strong>Prix :</strong> 9€</p>
+        <button>Acheter</button>
       </div>
     </div>
   </main>
