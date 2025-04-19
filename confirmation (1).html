@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmation – BKT Prod</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+    }
+
+    .formulaire, .confirmation {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    .confirmation-message {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="formulaire" id="formulaire">
+    <h2>Finalisez votre commande</h2>
+    <p>Veuillez remplir vos informations :</p>
+    <form id="commandeForm">
+      <input type="text" placeholder="Nom complet" required><br>
+      <input type="email" placeholder="Adresse email" required><br>
+      <input type="text" placeholder="Adresse postale" required><br>
+      <button type="submit">Confirmer</button>
+    </form>
+  </div>
+
+  <div class="confirmation confirmation-message" id="confirmation">
+    <h1>Merci pour votre commande !</h1>
+    <p>Votre commande a bien été reçue.</p>
+    <a href="index.html">Retour à l'accueil</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('commandeForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('formulaire').style.display = 'none';
+      document.getElementById('confirmation').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

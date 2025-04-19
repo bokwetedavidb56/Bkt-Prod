@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmation – BKT Prod</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+    }
+
+    .formulaire, .confirmation {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    input, select {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    .confirmation-message {
+      display: none;
+    }
+
+    .panier-resume {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .panier-resume ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .panier-resume li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="formulaire" id="formulaire">
+    <h2>Finalisez votre commande</h2>
+    <form id="commandeForm">
+      <input type="text" id="prenom" placeholder="Prénom" required><br>
+      <input type="text" id="nom" placeholder="Nom" required><br>
+      <input type="email" id="email" placeholder="Adresse email" required><br>
+      <input type="text" id="adresse" placeholder="Adresse postale" required><br>
+      <input type="tel" id="telephone" placeholder="Téléphone" required><br>
+      <select id="livraison" required>
+        <option value="">Mode de livraison</option>
+        <option value="standard">Standard</option>
+        <option value="express">Express</option>
+      </select><br>
+      <button type="submit">Confirmer</button>
+    </form>
+  </div>
+
+  <div class="confirmation confirmation-message" id="confirmation">
+    <h1 id="merciMessage">Merci pour votre commande !</h1>
+    <p id="recapMessage"></p><p id="numeroCommande"></p>
+    <div class="panier-resume">
+      <h3>Résumé de votre panier :</h3>
+      <ul id="panierListe"></ul>
+    </div>
+    <a href="index.html">Retour à l'accueil</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('commandeForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const prenom = document.getElementById('prenom').value;
+      const email = document.getElementById('email').value;
+      const livraison = document.getElementById('livraison').value;
+
+      localStorage.setItem("commandeInfos", JSON.stringify({
+        prenom,
+        nom: document.getElementById('nom').value,
+        email,
+        adresse: document.getElementById('adresse').value,
+        telephone: document.getElementById('telephone').value,
+        livraison
+      }));
+
+      // Affichage message
+      document.getElementById('formulaire').style.display = 'none';
+      document.getElementById('merciMessage').innerText = `Merci ${prenom} pour votre commande !`;
+      document.getElementById('recapMessage').innerText = `Une confirmation a été envoyée à ${email}. Livraison : ${livraison}.`;
+      
+      const numero = "BKT-" + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById("numeroCommande").innerText = `Numéro de commande : ${numero}`;
+      document.getElementById('confirmation').style.display = 'block';
+    
+
+      // Résumé du panier
+      const panier = JSON.parse(localStorage.getItem("panier")) || [];
+      const panierListe = document.getElementById("panierListe");
+      panierListe.innerHTML = "";
+      panier.forEach(article => {
+        const item = document.createElement("li");
+        item.textContent = `${article.nom} – ${article.prix} €`;
+        panierListe.appendChild(item);
+      });
+
+      localStorage.removeItem("panier"); // Optionnel : vider le panier après confirmation
+    });
+  </script>
+</body>
+</html>

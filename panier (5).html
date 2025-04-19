@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Votre Panier – BKT Prod</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .panier {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .article {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .commander {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .commander:hover {
+      background: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <h1>Votre Panier</h1>
+  <div class="panier" id="panier">
+    <!-- Les articles sélectionnés s'affichent ici -->
+  </div>
+
+  <div class="total" id="total">Total : 0 €</div>
+
+  <a href="confirmation.html">
+    <button class="commander">Valider la commande</button>
+  </a>
+
+  <script>
+    function afficherPanier() {
+      const panier = JSON.parse(localStorage.getItem("panier")) || [];
+      const panierDiv = document.getElementById("panier");
+      const totalDiv = document.getElementById("total");
+      let total = 0;
+
+      panierDiv.innerHTML = "";
+      panier.forEach((article, index) => {
+        total += article.prix;
+
+        const articleDiv = document.createElement("div");
+        articleDiv.classList.add("article");
+
+        articleDiv.innerHTML = `
+          <span>${article.nom}</span>
+          <span>${article.prix} €</span>
+        `;
+
+        panierDiv.appendChild(articleDiv);
+      });
+
+      totalDiv.innerText = `Total : ${total} €`;
+    }
+
+    window.onload = afficherPanier;
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Commande – BKT Prod</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulaire de commande</h1>
+  <form>
+    <label>Nom :</label>
+    <input type="text" required>
+
+    <label>Email :</label>
+    <input type="email" required>
+
+    <label>Produit :</label>
+    <select required>
+      <option value="">-- Choisissez un produit --</option>
+      <option>Affiche artistique</option>
+      <option>Tote bag BKT</option>
+      <option>T-shirt édition limitée</option>
+      <option>Carnet créatif</option>
+      <option>Mug illustré</option>
+    </select>
+
+    <label>Quantité :</label>
+    <input type="number" min="1" value="1" required>
+
+    <label>Adresse de livraison :</label>
+    <textarea rows="4" required></textarea>
+
+    <button type="submit">Valider la commande</button>
+  </form>
+</body>
+</html>
